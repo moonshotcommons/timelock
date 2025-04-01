@@ -242,6 +242,14 @@ impl TimeLock  {
         }
     }
 
+    pub fn executeV2(&mut self, target: Address) -> Result<(), TimeLockError> {
+       call(
+            Call::new_in(self).value(U256::from(1)), 
+            target, 
+            &[]
+        );
+        Ok(())
+    }
     // Function to cancel a queued transaction
     pub fn cancel(
         &mut self,
